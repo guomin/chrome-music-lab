@@ -66,6 +66,7 @@ AnalyserView = function(canvas) {
 
 	// This analysis type may be overriden later on if we discover we don't support the right shader features.
 	this.analysisType = ANALYSISTYPE_3D_SONOGRAM;
+	// this.analysisType = ANALYSISTYPE_FREQUENCY;
 
 	this.sonogram3DWidth = 256;
 	this.sonogram3DHeight = 256;
@@ -83,7 +84,8 @@ AnalyserView = function(canvas) {
 
 	// Background color
 	this.backgroundColor = [.08, .08, .08, 1];
-	this.foregroundColor = [0,.7,0,1];
+	//this.foregroundColor = [0,.7,0,1];
+	this.foregroundColor = [0,.1,.7,1];
 
 	this.canvas = canvas;
 	this.initGL();
@@ -103,9 +105,9 @@ AnalyserView.prototype.getAvailableContext = function(canvas, contextList) {
 }
 
 AnalyserView.prototype.initGL = function() {
-	model 		= new Matrix4x4();
-	view 		= new Matrix4x4();
-	projection 	= new Matrix4x4();
+	model 		= new Matrix4x4();  // 世界坐标系
+	view 		= new Matrix4x4();  // 相机坐标系
+	projection 	= new Matrix4x4();  // 投影坐标系
 	// ________________________________________
 	var sonogram3DWidth = this.sonogram3DWidth;
 	var sonogram3DHeight = this.sonogram3DHeight;
